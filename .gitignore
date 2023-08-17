@@ -1,0 +1,38 @@
+# Ignore built/compiled files
+dist/
+build/
+out/
+
+# Ignore npm packages
+node_modules/
+
+# Ignore logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE config
+.idea/
+.vscode/
+
+# Ignore environment variables
+.env
+
+# Ignore map sourcemap files
+*.map
+
+# Ignore TypeScript config
+tsconfig.json
+
+# Ignore TypeScript type definition files
+*.d.ts
+
+# Allow raw TypeScript files
+!*.ts
+
+# Allow source maps
+!*.map.js
