@@ -1,17 +1,25 @@
 import express from 'express';
 import { Pool } from 'pg';
+import * as dotenv from 'dotenv';
 
 // Create Express app
 const app = express();
-app.use(express.json()); 
+app.use(express.json());
+
+dotenv.config() // loads .env
+
+const dbConnString: string | undefined = process.env.DB_CONN_STRING;
+
+const db_config = {
+  connectionString: dbConnString,
+}
 
 // Create Postgres connection pool
-const db = new Pool({
-  user: 'tos_user',
-  host: 'localhost',
-  database: 'tosdb',
-  password: 'insecurepassword',
-  port: 5433,
+const db = new Pool(db_config);
+
+db.on('error', (err, client) => {
+  console.error('Unexpected error on client', err);
+  process.exit(-1);
 });
 
 // API route to get all objects
